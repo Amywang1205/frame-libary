@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>flatpicker</title>
+		<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+		<script src="https://unpkg.com/flatpickr"></script>
+	</head>
+	<body>
+		<input type="text" class="begin"/>
+		<input type="text" class="end"/>
+		<button class="btn">点我</button>
+	</body>
+	<script type="text/javascript">
+		var begin = document.querySelector('.begin');
+		var end = document.querySelector('.end');
+		var btn = document.querySelector('.btn');
+		
+		Flatpickr.l10ns.default.weekdays.shorthand = ["周日","周一","周二","周三","周四","周五","周六"]
+		Flatpickr.l10ns.default.months.longhand = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
+		console.dir(Flatpickr)
+		//方式一
+		begin.flatpickr({
+			
+		});
+		//方式二
+		var cal = new Flatpickr(end,{
+			//是否需要时分
+			enableTime: true,
+			//格式化时间
+			altInput: true,
+			//格式化时间的格式设置
+			altFormat: "Y/m/d",
+			//最小时间和最大时间控制
+			minDate: new Date(),
+			maxDate: "2017-12-20",
+			//默认时间设置
+			defaultDate: 1486294523221
+		});
+		btn.onclick = function(){
+			cal.clear();
+		}
+	</script>
+</html>
